@@ -1,4 +1,0 @@
-			Gnome	Bubble Sort	Merge Sort	Insertion Sort	Heap Sort
-Time Complexity(Worst)	O(N^2)	O(n*n)		U(nlogn)	O(n*n)		O(nlogn)
-Auxiliary Space		O(1)	O(1)		O(n)		O(1)		O(1) (difficult to adapt)
-Best Option		YES	NO(change)	NO		YES		NO
