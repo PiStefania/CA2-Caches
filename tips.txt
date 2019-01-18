@@ -1,12 +1,16 @@
 useful links: http://logos.cs.uic.edu/366/notes/mips%20quick%20tutorial.htm
               http://www.disca.upv.es/spetit/spim.htm
+              https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/
               
-      Gnome	Bubble Sort	Merge Sort	Insertion Sort	Heap Sort
-Time Complexity(Worst)	O(N^2)	O(n*n)		U(nlogn)	O(n*n)		O(nlogn)
-Auxiliary Space		O(1)	O(1)		O(n)		O(1)		O(1) (difficult to adapt)
-Best Option		YES	NO(change)	NO		YES		NO
+                        Gnome   BubbleSort  MergeSort	  InsertionSort	  HeapSort
+Time Complexity(Worst)	O(N^2)	O(n*n)		  U(nlogn)    O(n*n)		      O(nlogn)
+Auxiliary Space		      O(1)	  O(1)		    O(n)		    O(1)		        O(1)
+Best Option		          YES	    NO(change)	NO		      NO		          YES
 
-Best option: Gnome or Insertion Sort
+We need:
+~Auxiliary Space: O(1) (use same data positions, no access to additional ones)
+~Smallest Time Complexity
+Best option: Gnome or HeapSort
 
 Gnome:
 int index = 0; 
@@ -23,22 +27,31 @@ while (index < n) {
 
 OR 
 
-Insertion Sort:
-int i, key, j; 
-for (i = 1; i < n; i++) 
-{ 
-   key = arr[i]; 
-   j = i-1; 
+    // Build heap (rearrange array) 
+    for (int i = n / 2 - 1; i >= 0; i--) 
+        heapify(arr, n, i); 
 
-   /* Move elements of arr[0..i-1], that are 
-      greater than key, to one position ahead 
-      of their current position */
-   while (j >= 0 && arr[j] > key) 
-   { 
-       arr[j+1] = arr[j]; 
-       j = j-1; 
-   } 
-   arr[j+1] = key; 
-}
+    int largest = i; // Initialize largest as root 
+    int l = 2*i + 1; // left = 2*i + 1 
+    int r = 2*i + 2; // right = 2*i + 2 
+  
+    // If left child is larger than root 
+    if (l < n && arr[l] > arr[largest]) 
+        largest = l; 
+  
+    // If right child is larger than largest so far 
+    if (r < n && arr[r] > arr[largest]) 
+        largest = r; 
+  
+    // If largest is not root 
+    if (largest != i) 
+    { 
+        swap(arr[i], arr[largest]); 
+  
+        // Recursively heapify the affected sub-tree 
+        heapify(arr, n, largest); 
+    } 
 
 PC : 0X400000 
+F10: each step
+F5: all
