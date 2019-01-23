@@ -45,10 +45,10 @@ continue:
 		j gnomeLoop
 
 swap:
-	sb $t2, 0($t4)
-	sb $t5, 0($t8)
-	addi $t3, $t3, -2
-	j gnomeLoop
+		sb $t2, 0($t4)
+		sb $t5, 0($t8)
+		addi $t3, $t3, -2
+		j gnomeLoop
 
 end:
 		li $v0, 10			# system call code for exit = 10
